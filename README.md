@@ -1,3 +1,7 @@
+This is A fork of GNU elf making it to where it does not use system GCC but uses a windows cross compiler   
+This is most likely not suitable for production  
+
+
 -------------------------------------------------
 Building EFI Applications Using the GNU Toolchain
 -------------------------------------------------

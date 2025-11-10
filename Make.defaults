@@ -66,20 +66,21 @@ is_absolute = $(subst $(call stripped,$(1)),$(empty),$(call unstripped,$(1)))
 
 override INSTALLROOT:=$(if $(call is_absolute,$(INSTALLROOT)),,$(TOPDIR)/)$(INSTALLROOT)
 
-PREFIX       := /usr/local
+PREFIX       := /opt/gnu_efi_rt
 EXEC_PREFIX  := $(PREFIX)
 LIBDIR       := $(EXEC_PREFIX)/lib
 INCLUDEDIR   := $(PREFIX)/include
 INSTALL      := install
+CROSS_COMPILE ?= x86_64-w64-mingw32-
 
 # Compilation tools
 HOSTCC       := $(prefix)gcc
-CC           := $(prefix)$(CROSS_COMPILE)gcc
-AS           := $(prefix)$(CROSS_COMPILE)as
-LD           := $(prefix)$(CROSS_COMPILE)ld
-AR           := $(prefix)$(CROSS_COMPILE)ar
-RANLIB       := $(prefix)$(CROSS_COMPILE)ranlib
-OBJCOPY      := $(prefix)$(CROSS_COMPILE)objcopy
+CC           := $(CROSS_COMPILE)gcc
+AS           := $(CROSS_COMPILE)as
+LD           := $(CROSS_COMPILE)ld
+AR           := $(CROSS_COMPILE)ar
+RANLIB       := $(CROSS_COMPILE)ranlib
+OBJCOPY      := $(CROSS_COMPILE)objcopy
 
 # Set verbose or nonverbose output similarly to automake's silent rules.
 # Default is nonverbose, but, just like with automake, it can be disabled
@@ -275,7 +276,7 @@ EFI_CFLAGS  += $(ARCH3264) -g -O2 -Wall -Wextra -Werror \
            -fno-strict-aliasing \
            -ffreestanding -fno-stack-protector
 else
-EFI_CFLAGS  += $(ARCH3264) -g -O2 -Wall -Wextra -Werror \
+EFI_CFLAGS  += $(ARCH3264) -fPIC -g -O2 -Wall -Wextra -Werror \
            -fno-strict-aliasing \
            -ffreestanding -fno-stack-protector \
            $(if $(findstring 0,$(USING_CLANG)),-fno-merge-all-constants,)

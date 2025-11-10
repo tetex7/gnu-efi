@@ -43,18 +43,18 @@ SRCDIR = $(VPATH)
 
 include $(SRCDIR)/Make.defaults
 
-SUBDIRS    = lib inc apps
-ifeq ($(IS_MINGW32),)
-  SUBDIRS += gnuefi
-endif
+SUBDIRS    = lib inc #apps
+#ifeq ($(IS_MINGW32),)
+#  SUBDIRS += gnuefi
+#endif
 
 all:	check_gcc $(SUBDIRS)
 
 ifeq ($(IS_MINGW32),)
-gnuefi: lib
-apps:	gnuefi
+#gnuefi: lib
+#apps:	gnuefi
 else
-apps:	lib
+#apps:	lib
 endif
 
 mkvars:

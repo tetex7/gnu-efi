@@ -41,11 +41,11 @@ SRCDIR = $(VPATH)
 include $(SRCDIR)/../Make.defaults
 
 FILES = boxdraw smbios console crc data debug dpath \
-        entry error event exit guid hand hw init lock \
+        error event exit guid hand hw init lock \
         misc pause sread str cmdline runtime/rtlock \
         runtime/efirtlib runtime/rtstr runtime/vm runtime/rtdata \
         $(ARCH)/initplat $(ARCH)/math $(ARCH)/setjmp \
-        ctors print ms_va_print va_print
+        print ms_va_print va_print
 
 ifeq ($(ARCH),ia64)
 FILES += $(ARCH)/salpal $(ARCH)/palproc
