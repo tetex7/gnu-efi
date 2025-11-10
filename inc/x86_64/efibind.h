@@ -113,7 +113,9 @@ typedef uint16_t   UINT16;
 typedef int16_t    INT16;
 
 typedef uint8_t    UINT8;
-typedef unsigned char       CHAR8;
+// Removed unsigned I don't know who decided a charge should be unsigned
+// But I want their head
+typedef char       CHAR8;
 typedef int8_t     INT8;
 
 #undef VOID
