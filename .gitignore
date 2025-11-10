@@ -5,3 +5,4 @@
 *.so
 *.tar.*
 *.tar
+ms_va_print.c
