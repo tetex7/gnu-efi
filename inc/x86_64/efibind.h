@@ -98,7 +98,11 @@ Revision History
 
 #include <stddef.h>
 
+#ifdef __cplusplus
+typedef wchar_t CHAR16;
+#else
 typedef uint16_t CHAR16;
+#endif
 #define WCHAR CHAR16
 
 typedef uint64_t   UINT64;
